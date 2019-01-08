@@ -10,10 +10,7 @@
  */
 class Home extends Controller
 {
-    /**
-     * PAGE: index
-     * This method handles what happens when you move to http://yourproject/home/index (which is the default page btw)
-     */
+    
     public function index()
     {
         // load views
@@ -22,24 +19,22 @@ class Home extends Controller
         require APP . 'view/_templates/footer.php';
     }
 
-    /**
-     * PAGE: exampleone
-     * This method handles what happens when you move to http://yourproject/home/exampleone
-     * The camelCase writing is just for better readability. The method name is case-insensitive.
-     */
     public function exampleOne()
     {
-        // load views
+        $brands = $this->model->getBrandNames();
         require APP . 'view/_templates/header.php';
         require APP . 'view/home/example_one.php';
         require APP . 'view/_templates/footer.php';
     }
 
-    /**
-     * PAGE: exampletwo
-     * This method handles what happens when you move to http://yourproject/home/exampletwo
-     * The camelCase writing is just for better readability. The method name is case-insensitive.
-     */
+    public function addBrand() {
+        if (isset($_POST["d_model"])) {
+            $this->model->d_model($_POST["marka"], $_POST["model"]);
+        }
+        
+        header('location: ' . URL . 'home/exampleOne');
+    }
+
     public function exampleTwo()
     {
         // load views

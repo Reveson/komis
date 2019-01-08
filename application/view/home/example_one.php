@@ -1,8 +1,18 @@
 <div class="container">
-    <h2>Lorem Ipsum</h2>
-    <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut 
-    labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi 
-    ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore 
-    eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt 
-    mollit anim id est laborum."</p>
+    <form action="<?php echo URL; ?>home/addBrand" method="POST">
+        <p>Marka:</p><br />
+
+
+        <select name="marka">
+        <?php foreach ($brands as $brand) { ?>
+        <option><?php echo htmlspecialchars($brand->nazwa_marki, ENT_QUOTES, 'UTF-8'); ?></option>
+        <?php } ?>
+        </select>
+        <p>Model:</p>
+        <input type="text" name="model" size="15" maxlength="30"/>
+
+        </select>
+        <br />
+        <input type="submit" name="d_model" value="Przeslij" />
+    </form>
 </div>

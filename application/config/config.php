@@ -62,7 +62,7 @@ define('URL', URL_PROTOCOL . URL_DOMAIN . URL_SUB_FOLDER);
 // define('DB_CHARSET', 'utf8');
 
 define('DB_TYPE', 'mysql');
-define('DB_HOST', '127.0.0.1');
+define('DB_HOST', '192.168.0.16');
 define('DB_NAME', 'db_test');
 define('DB_USER', 'root');
 define('DB_PASS', '');
