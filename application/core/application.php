@@ -15,35 +15,9 @@ class Application
         if (session_status() == PHP_SESSION_NONE) {
             session_start();
         }
-        
-        if(isset($_SESSION['username'])) {
-            $this->startApp();
-        }
-        else {
-            require APP . 'controller/auth.php';
-            $page = new Auth();
-            $this->splitUrl();
-            // $page->index();
-            if (method_exists($page, $this->url_action)) {
 
-                if (!empty($this->url_params)) {
-                    // Call the method and pass arguments to it
-                    call_user_func_array(array($page, $this->url_action), $this->url_params);
-                } else {
-                    // If no parameters are given, just call the method without parameters, like $this->home->method();
-                    $page->{$this->url_action}();
-                }
-
-            } else {
-                if (strlen($this->url_action) == 0) {
-                    // no action defined: call the default index() method of a selected controller
-                    $page->index();
-                }
-                else {
-                    header('location: ' . URL . 'problem');
-                }
-            }
-        }
+        $this->startApp();
+    
     }
 
     /**
@@ -71,7 +45,7 @@ class Application
             $this->url_controller = new $this->url_controller();
 
             // check for method: does such a method exist in the controller ?
-            if (method_exists($this->url_controller, $this->url_action)) {
+            if (method_exists($this->url_controller, $this->url_action) && $this->restrictAccess()) {
 
                 if (!empty($this->url_params)) {
                     // Call the method and pass arguments to it
@@ -82,7 +56,7 @@ class Application
                 }
 
             } else {
-                if (strlen($this->url_action) == 0) {
+                if (strlen($this->url_action) == 0 && $this->restrictAccess()) {
                     // no action defined: call the default index() method of a selected controller
                     $this->url_controller->index();
                 }
@@ -93,6 +67,24 @@ class Application
         } else {
             header('location: ' . URL . 'problem');
         }
+    }
+
+    private function restrictAccess() {
+        $url = trim($_GET['url'], '/');
+        $url = filter_var($url, FILTER_SANITIZE_URL);
+        $url = explode('/', $url);
+        $class = $url[0];
+
+        if($class == "staff")
+            if(!in_array("zaawansowane", $_SESSION['permissions']))
+                return 0;
+        if($class == "dictionary")
+            if(!in_array("d_pracownika", $_SESSION['permissions']))
+                return 0;
+        if($class == "clients")
+            if(!in_array("d_klienta", $_SESSION['permissions']))
+                return 0;
+        return 1;
     }
 
     /**

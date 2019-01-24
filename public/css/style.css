@@ -105,11 +105,11 @@ body {
     color: rgb(255, 0, 0);
 }
 
-.logoutButton {
+.logButton {
     text-align: right;
 }
 
-.logoutButton a {
+.logButton a {
     margin-right: 33px;
     margin-top: 5px;
     display: inline-block;
@@ -122,4 +122,11 @@ body {
     background: #222;
     color: #fff;
 
+}
+
+.infoBox {
+    color: #FF0000;
+    margin-left: 33px;
+    margin-top: 10px;
+    font-size: 15px;
 }
