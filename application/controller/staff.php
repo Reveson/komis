@@ -23,7 +23,7 @@ class Staff extends Controller
             $this->model->changePassword($id_number, $password);
 
             if(isset($_POST["drugieImie"])) {
-                $this->model->uzupelnij_imie($_POST["pesel"], $_POST["imie"]);
+                $this->model->uzupelnij_imie($_POST["pesel"], $_POST["drugieImie"]);
             }
             if(isset($_POST["telefon"])) {
                 $this->model->uzupelnij_telefon($_POST["pesel"], $_POST["telefon"]);

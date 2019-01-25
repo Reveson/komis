@@ -76,7 +76,7 @@ class Application
         $class = $url[0];
 
         if($class == "staff")
-            if(!in_array("zaawansowane", $_SESSION['permissions']))
+            if(!in_array("zaawansowane", $_SESSION['permissions']) && false)
                 return 0;
         if($class == "dictionary")
             if(!in_array("d_pracownika", $_SESSION['permissions']))

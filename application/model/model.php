@@ -291,4 +291,46 @@ class Model
 
     }
 
+    public function getCars() {
+        $sql = "SELECT MA.nazwa_marki, MO.nazwa_modelu, year(S.rok_produkcji) as rok, S.przebieg, U.plan_koszt_sprzedazy, ZD.sciezka_min, RD.nazwa_rodzaju_paliwa, TP.nazwa_typu_samochodu, NP.nazwa_napedu, SB.nazwa_skrzyni_biegow,KLR.nazwa_koloru, S.poj_skokowa ".
+        "FROM db_test.samochod S ".
+        "INNER JOIN db_test.zmiana Z ON Z.id_samochodu = S.id_samochodu ".
+        "INNER JOIN db_test.umowa U ON Z.id_zmiany = U.id_zmiany ".
+        "INNER JOIN db_test.wyposazenie W ON W.id_wyposazenia = S.id_wyposazenia ".
+        "INNER JOIN db_test.model MO ON MO.id_modelu = W.id_modelu ".
+        "INNER JOIN db_test.marka MA ON MA.id_marki = MO.id_marki ".
+        "INNER JOIN db_test.zdjecie ZD ON S.id_samochodu = ZD.id_samochodu ".
+        "INNER JOIN db_test.rodzaj_paliwa RD ON RD.id_rodzaju_paliwa = W.id_rodzaju_paliwa ".
+        "INNER JOIN db_test.typ_samochodu TP ON TP.id_typu_samochodu = W.id_typu_samochodu ".
+        "INNER JOIN db_test.naped NP ON NP.id_napedu = W.id_napedu ".
+        "INNER JOIN db_test.skrzynia_biegow SB ON SB.id_skrzyni_biegow = W.id_skrzyni_biegow ".
+        "INNER JOIN db_test.kolor KLR ON KLR.id_koloru = W.id_koloru ".
+        "WHERE id_umowy = (SELECT MAX(id_umowy) FROM db_test.umowa UU INNER JOIN db_test.zmiana ZZ ON UU.id_zmiany = ZZ.id_zmiany WHERE UU.czy_sprzedaz = 0 AND ZZ.id_samochodu = Z.id_samochodu)";
+        $query = $this->db->prepare($sql);
+        $query->execute();
+
+        return $query->fetchAll();
+        
+    }
+
+    public function addCar($model, $rok, $przebieg, $pojemnosc, $paliwo, $cena) {
+        $login = $_SESSION['username'];
+        $procedure = "CALL kupno_samochodu (:login,:paliwo,'manualna','na tylne koła',:model,'sedan','zielony','500','abhdbhck','erdf',1,:rok,:przebieg,0,:pojemnosc,23,5,'Genowefa','Kopeć','123356789110','5341228170','Wawka','Ptysiowa 5ćset/9ćset','cbndhf9873345','Jakiś zakład rozdający dowody nieletnim',0,:cena,5000)";
+        $query = $this->db->prepare($procedure);
+        $parameters = array(':login' => $login, ':model' => $model, ':rok' => $rok,
+         ':przebieg' => $przebieg, ':pojemnosc' => $pojemnosc, ':paliwo' => $paliwo, ':cena' => $cena);
+        $query->execute($parameters);
+    }
+
+    
+    public function getModels() {
+        
+        $sql = "SELECT nazwa_modelu FROM model";
+        $query = $this->db->prepare($sql);
+        $query->execute();
+
+        return $query->fetchAll();
+    }
+
+
 }
