@@ -91,14 +91,15 @@ body {
 
 .loggedInUser {
     text-align: right;
+    margin-right: 33px;
+    font-size: 15px;
+    color: rgb(0, 0, 0);
+    color: #4c868d;
+    text-decoration: none;
+    font-weight: bold;
 }
 
 .loggedInUser a {
-    margin: 33px;
-    font-size: 15px;
-    color: rgb(0, 0, 0);
-    text-decoration: none;
-    font-weight: bold;
 }
 
 .errorMessage {
@@ -118,10 +119,16 @@ body {
     font-size: 10px;
     text-transform: uppercase;
     /* font-weight: bold; */
-    border: 2px solid #222;
-    background: #222;
+    border: solid 1px #5f8a8f;
+    background: #5f8a8f;
     color: #fff;
 
+}
+
+.logButton a:hover {
+    
+    border: solid 1px #5f8a8f;
+    background-color: #f1f1f1;
 }
 
 .infoBox {
@@ -146,10 +153,122 @@ table{
     border-collapse:collapse;
     font-size:18px;
     font-family:Arial;
-    background:linear-gradient(top, #3c3c3c 0%, #222222 100%);
-    background:-webkit-linear-gradient(top, #3c3c3c 0%, #222222 100%);
+    background:linear-gradient(top, #3c3c3c 0%, #5f8a8f 100%);
+    background:-webkit-linear-gradient(top, #3c3c3c 0%, #5f8a8f 100%);
     }
     
     td:hover{
     background: orange;
     }
+
+    /* Weronika */
+
+    body {
+        background-color: #f1f1f1;
+        padding-top: 5px;
+    }
+    .navbar {
+        width: 100%;
+        display: inline;
+        padding-left: 10px;
+    }
+    .navbar ul {
+        margin-left: -40px;
+    }
+    .navbar ul li {
+        display: inline-block;
+    }
+    a:link, a:visited {
+        color: white;
+        text-decoration: none;
+    }
+    a:hover {
+        color: #5f8a8f;
+    }
+    .navbar li:hover {
+        width: 150px;
+        height: 20px;
+        border: solid 1px #5f8a8f;
+        background-color: #f1f1f1;
+        color: #5f8a8f;
+        text-align: center;
+        text-transform: uppercase;
+        padding: 10px;
+    }
+    .navbar li {
+        width: 150px;
+        height: 20px;
+        border: solid 1px #5f8a8f;
+        background-color: #5f8a8f;
+        color: white;
+        text-align: center;
+        text-transform: uppercase;
+        padding: 10px;
+    }
+    .box_glowny {
+        background-color: #dfdfdf;
+        width: 100%;
+        height: 250px;
+        margin-top: 30px;
+        background-image: url("http://funkyimg.com/i/2QxCg.png");
+        background-repeat: no-repeat;
+        background-position: 50% 20%;
+        background-size: 800px;
+        position: relative;
+    }
+    #left_bar {
+        position: relative;
+        background: #dfdfdf;
+        padding-top: 5px;
+        height: 100%;
+        float:left;
+        padding-left: 10px;
+        padding-right: 10px;
+        width: 15%;
+        border-top: solid 2px #5f8a8f;
+    }
+    #stopka {
+        position: relative;
+        background: #5f8a8f;
+        padding: 20px;
+        color: white;
+        margin-left: -10px;
+        margin-right: -10px;
+    }
+    #right_bar {
+        position: relative;
+        padding-top: 10px;
+        padding-left: 10px;
+        height: 100%;
+        width: 75%;
+        float:left;
+    }
+    .left_nagl p{
+        background-color: #5f8a8f;
+        text-align: center;
+        padding: 3px;
+        color: white;
+    }
+    .clear {clear:both;}
+    .dol {width: 100%; position: relative;}
+    #galeria {width: 100%;	position: relative;}
+    .boxik {
+        margin-top: 5px;
+        z-index: 8;
+        margin-right: 10px;
+        float: left;
+        border: solid 2px #5f8a8f;
+    }
+    .zdjecie img{
+        z-index: 8;
+        width: 200px;
+        height: 200px;
+    }
+    .podpis {
+        background-color: #5f8a8f;
+        color: white;
+        padding: 5px;
+    }
+    #mapka {margin: auto; margin-bottom: 10px; text-align: center;}
+    #mapka p {background: #5f8a8f; text-transform: uppercase; padding: 5px; color: white;}
+    

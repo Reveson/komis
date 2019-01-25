@@ -19,27 +19,19 @@ class Home extends Controller
         require APP . 'view/_templates/footer.php';
     }
 
-    public function exampleOne()
+    public function kontakt()
     {
-        $brands = $this->model->getBrandNames();
         require APP . 'view/_templates/header.php';
-        require APP . 'view/home/example_one.php';
+        require APP . 'view/home/kontakt.php';
         require APP . 'view/_templates/footer.php';
     }
 
-    public function addBrand() {
-        if (isset($_POST["d_model"])) {
-            $this->model->d_model($_POST["marka"], $_POST["model"]);
-        }
-        
-        header('location: ' . URL . 'home/exampleOne');
-    }
 
-    public function exampleTwo()
+    public function oNas()
     {
         
         require APP . 'view/_templates/header.php';
-        require APP . 'view/home/example_two.php';
+        require APP . 'view/home/onas.php';
         require APP . 'view/_templates/footer.php';
     }
 }

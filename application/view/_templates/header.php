@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Komis</title>
+    <title>Komis samochodowy</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -17,10 +17,10 @@
     <!-- logged in user -->
     <?php  if(isset($_SESSION['username'])) { ?>
         <div class="loggedInUser">
-            <a href="<?php echo URL; ?>account">
+            <!-- <a href="<?php echo URL; ?>account"> -->
                 Zalogowany jako: 
                     <?php echo $_SESSION['username']; ?>
-            </a>
+            <!-- </a> -->
         </div>
         <div class="logButton">
             <a href="<?php echo URL; ?>auth/logout">Wyloguj</a>
@@ -31,23 +31,30 @@
         </div>
     <?php } ?>
     <!-- logo -->
-    <div class="logo">
+    <!-- <div class="logo">
         KOMIS
-    </div>
+    </div> -->
 
     <!-- navigation -->
-    <div class="navigation">
-        <a href="<?php echo URL; ?>">Strona główna</a>
+    <div class = "navbar">
+    <!-- <div class="navigation "> -->
+        
+        <img src="http://funkyimg.com/i/2QxzF.png" alt="logo" height='40px';>
+        <ul>
+        <li><a href="<?php echo URL; ?>">Strona główna</a></li>
+        <li><a href="<?php echo URL; ?>home/kontakt">Kontakt</a></li>
+        <li><a href="<?php echo URL; ?>home/onas">O nas</a></li>
         <?php if(isset($_SESSION["username"])) { ?>
-            <?php if(in_array("d_pracownika", $_SESSION['permissions'])) { ?> <a href="<?php echo URL; ?>dictionary">Słowniki</a> <?php } ?>
-            <?php if(in_array("zaawansowane", $_SESSION['permissions'])) { ?> <a href="<?php echo URL; ?>staff">Personel</a> <?php } ?>
-            <?php if(in_array("d_samochod", $_SESSION['permissions'])) { ?> <a href="<?php echo URL; ?>cars">Dodaj samochód</a> <?php } ?>
-            <?php if(in_array("d_klienta", $_SESSION['permissions'])) { ?> <a href="<?php echo URL; ?>clients">Dodaj klienta</a> <?php } ?>
-            <a href="<?php echo URL; ?>auth/changePasswordPage">Zmień hasło</a>
+            <?php if(in_array("d_pracownika", $_SESSION['permissions'])) { ?> <li><a href="<?php echo URL; ?>dictionary">Słowniki</a></li> <?php } ?>
+            <?php if(in_array("zaawansowane", $_SESSION['permissions'])) { ?> <li><a href="<?php echo URL; ?>staff">Personel</a> </li><?php } ?>
+            <?php if(in_array("d_samochod", $_SESSION['permissions'])) { ?> <li><a href="<?php echo URL; ?>cars">Dodaj samochód</a></li> <?php } ?>
+            <?php if(in_array("d_klienta", $_SESSION['permissions'])) { ?> <li><a href="<?php echo URL; ?>clients">Dodaj klienta</a> </li><?php } ?>
+           <li> <a href="<?php echo URL; ?>auth/changePasswordPage">Zmień hasło</a></li>
         <?php } ?>
         <!-- <a href="<?php echo URL; ?>home/exampleone">zakładka 1</a> -->
         <!-- <a href="<?php echo URL; ?>home/exampletwo">zakładka 2</a> -->
         <!-- <a href="<?php echo URL; ?>cars">Tajna zakładka</a> -->
+        </ul>
     </div>
     <div class="infoBox">
         <?php 
